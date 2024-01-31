@@ -13,4 +13,4 @@
 
 <h1> Acesse o Projeto Online</h1>
 
-[Acesse aqui](https://fokus-ecru.vercel.app/)https://fokus-ecru.vercel.app/)
+[Acesse aqui](https://fokus-ecru.vercel.app/)
