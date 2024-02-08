@@ -58,7 +58,7 @@ function criarElementoTarefa(tarefa) {
 
     if (tarefa.completa) {
         li.classList.add('app__section-task-list-item-complete')
-        botao.querySelector('button').setAttribute('disabled', 'disabled')
+        botao.setAttribute('disabled', 'disabled')
     } else {
         li.onclick = () => {
             document.querySelectorAll('.app__section-task-list-item-active')
@@ -77,7 +77,6 @@ function criarElementoTarefa(tarefa) {
     
             li.classList.add('app__section-task-list-item-active')
         }
-    
     }
 
     return li
@@ -115,13 +114,18 @@ document.addEventListener('FocoFinalizado', () => {
     }
 })
 
-const removerTarefas = (somenteCompletas) => {
-    const seletor = somenteCompletas ? ".app__section-task-list-item-complete" : ".app__section-task-list-item"
+const removerTarefas  = (somenteCompletas) => {
+    // const seletor = somenteCompletas ? ".app__section-task-list-item-complete" : ".app__section-task-list-item"
+    let seletor =  ".app__section-task-list-item"
+    if (somenteCompletas) {
+        seletor = ".app__section-task-list-item-complete"
+    }
     document.querySelectorAll(seletor).forEach(elemento => {
         elemento.remove()
     })
-    tarefas = tarefas.filter(tarefa => !tarefa.completa)
-    atualizarTarefas() 
+    tarefas = somenteCompletas ? tarefas.filter(tarefa => !tarefa.completa) : []
+    atualizarTarefas()
 }
 
 btnRemoverConcluidas.onclick = () => removerTarefas(true)
+btnRemoverTodas.onclick = () => removerTarefas(false)
